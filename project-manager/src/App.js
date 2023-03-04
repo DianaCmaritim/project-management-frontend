@@ -56,7 +56,7 @@ const App = () => {
       .then((res) => res.json())
       .then((data) => setProjects(data));
   };
-  console.log  (projects)
+  console.log(projects);
 
   const patchProjects = (project) => {
     fetch(`http://localhost:9393/projects/${project.id}`, {
@@ -114,13 +114,7 @@ const App = () => {
   // handle search
   const [search, setSearch] = React.useState('');
 
-  const filteredProjects = projects.filter((project) => {
-    return project.title.toLowerCase().includes(search.toLowerCase());
-  });
-
-
   return (
-
     <ThemeProvider theme={appliedTheme}>
       <Box sx={{ display: 'flex' }}>
         <CssBaseline />
@@ -128,12 +122,13 @@ const App = () => {
           <Layout
             toggleTheme={toggleTheme}
             mode={mode}
-            projects={filteredProjects}
-            search={search}
+            projects={projects}
+            search={
+search}
             setSearch={setSearch}
             fetchProjects={fetchProjects}
           >
-            <Route exact path="/">
+            <Route exact path="/home">
               <Login />
             </Route>
             <Route exact path="/projects">
@@ -146,7 +141,6 @@ const App = () => {
               />
             </Route>
             <Route exact
-
               path='/projects/:id'
               render={(routerProps) => (
                 <ProjectDashboard
@@ -161,6 +155,7 @@ const App = () => {
         </Router>
       </Box>
     </ThemeProvider>
-  )
+  );
+
 }
 export default App

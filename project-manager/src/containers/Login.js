@@ -1,8 +1,15 @@
 import React from 'react'
 import { Logo } from '../components/nav/Logo'
 import { Grid, Typography, Button, Box } from '@mui/material'
+import { useHistory } from 'react-router-dom'
 
-const Login = ({ history }) => {
+const Login = () => {
+  const history = useHistory()
+
+  const handleLoginClick = () => {
+    history.push('/projects')
+  }
+
   return (
     <Grid
       sx={{ height: '100vh', width: '100vw', backgroundColor: '#fff' }}
@@ -29,7 +36,7 @@ const Login = ({ history }) => {
             A project management tool to help you keep your life organized.
           </Typography>
           <Button
-            onClick={() => history.push('/projects')}
+            onClick={handleLoginClick}
             variant='contained'
             size='large'
             className='btn-login'
